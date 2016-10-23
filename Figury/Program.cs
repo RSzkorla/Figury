@@ -9,22 +9,50 @@ namespace Figury
   class Program
   {
     static private int dokladnosc = 2;
-    static private List<Bryla> figury = new List<Bryla>();
+    static private List<Bryla> bryly = new List<Bryla>();
     static void DodajFiguryDoListy()
     {
-      figury.Add(new Kula());
-      figury.Add(new Ostroslup());
+      bryly.Add(new Kula());
+      bryly.Add(new Ostroslup());
+      bryly.Add(new Prostopadloscian());
+      bryly.Add(new Stozek());
+      bryly.Add(new Walec());
     }
     static void Main(string[] args)
     {
       DodajFiguryDoListy();
-      foreach(Bryla i in figury)
+      do
       {
-        Console.WriteLine(i.Nazwa());
-        i.WprowadzDane();
-        Console.WriteLine($"Pole: {i.LiczPole(dokladnosc)}, Objętość: {i.LiczObjetosc(dokladnosc)}");
-
-      }
+        Console.WriteLine();
+        Console.WriteLine("Bryły");
+        Console.WriteLine("Co chcescz policzyć?");
+        int i = 1;
+        foreach (Bryla obj in bryly)
+        {
+          Console.WriteLine($"{i}. {obj.Nazwa()}");
+          i++;
+        }
+        Console.WriteLine($"{i}. Koniec");
+        var wybor = Convert.ToInt32(Console.ReadLine());
+        Console.Clear();
+        if ((wybor > (bryly.Count + 1))||(wybor<1))
+        {
+          Console.WriteLine("Podałeś niewłaściwy numer");
+          
+          continue;
+        }
+        if (wybor == (bryly.Count + 1)) {
+          break;
+        }
+        Console.WriteLine();
+        Console.WriteLine($"{ bryly[wybor - 1].Nazwa()}");
+        bryly[wybor - 1].WprowadzDane();
+        Console.WriteLine("Podaj Dokładnnośc wyniku");
+        int.TryParse(Console.ReadLine(),out dokladnosc);
+        Console.WriteLine( $"Pole: {bryly[wybor - 1].LiczPole(dokladnosc)}");
+        Console.WriteLine($"Objętośc: {bryly[wybor - 1].LiczObjetosc(dokladnosc)}");
+        dokladnosc = 2;
+      } while (true);
     }
   }
 }
