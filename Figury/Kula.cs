@@ -11,7 +11,7 @@ namespace Figury
     private double promien{ get; set; }
     public override double LiczObjetosc(int dokladnosc)
     {
-      return Math.Round(((4 / 3) * Math.PI * Math.Pow(promien, 3)), dokladnosc);
+      return Math.Round(((4 / 3f) * Math.PI * Math.Pow(promien, 3)), dokladnosc);
     }
 
     public override double LiczPole(int dokladnosc)

@@ -13,7 +13,7 @@ namespace Figury
 
     public override double LiczObjetosc(int dokladnosc)
     {
-      return Math.Round(((1 / 3) * Math.PI * Math.Pow(promien, 2) * wysokosc), dokladnosc);
+      return Math.Round(((1 / 3f) * Math.PI * Math.Pow(promien, 2) * wysokosc), dokladnosc);
     }
 
     public override double LiczPole(int dokladnosc)
